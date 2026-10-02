@@ -21,29 +21,29 @@ Analysis code for **a mathematical approach for determining behavioral forest ed
 
 | File | Description |
 |---|---|
-| `BehavioralData.csv` | Raw focal-observation behavioral data |
-| `DataCleaning.R` | Cleans raw data and builds the per-monkey and binned datasets |
-| `monkeyIdData.csv` | Per-monkey summary of activity budgets, nearest neighbors and edge distances |
-| `anthBinData.csv`, `rivBinData.csv` | Binned (15 m) datasets for anthropogenic and riparian edges |
-| `initialPlotting.R` | Exploratory plots of per-monkey and binned data |
-| `anthModelFitting.R`, `rivModelFitting.R` | Fit and compare candidate models for each response and edge type |
-| `anthDEImodels.R`, `rivDEImodels.R` | Best-AIC models with DEI point estimates and 95% CIs |
-| `anthDEImodelsAdj.R`, `rivDEImodelsAdj.R` | Formatted versions of the DEI figures |
-| `anthDEIvaluePlots.R`, `rivDEIvaluePlots.R` | DEI estimates across a range of thresholds |
-| `tableCreation.R` | AIC, pseudo-R² and DEI summary table |
-| `anthDEImodels.RData`, `rivDEImodels.RData` | Saved workspaces from the DEI model scripts |
-| `initialPlots/`, `anthModels/`, `rivModels/`, `DEIplots/` | Exploratory, model-comparison and DEI figures (PDF) |
-| `allDEIplotsAnthAdj.pdf`, `allDEIplotsRivAdj.pdf`, `AICtable.pdf` | Formatted DEI figures and summary table |
+| `data/BehavioralData.csv` | Raw focal-observation behavioral data |
+| `data/monkeyIdData.csv` | Per-monkey summary of activity budgets, nearest neighbors and edge distances |
+| `data/anthBinData.csv`, `data/rivBinData.csv` | Binned (15 m) datasets for anthropogenic and riparian edges |
+| `R/DataCleaning.R` | Cleans raw data and builds the per-monkey and binned datasets |
+| `R/initialPlotting.R` | Exploratory plots of per-monkey and binned data |
+| `R/anthModelFitting.R`, `R/rivModelFitting.R` | Fit and compare candidate models for each response and edge type |
+| `R/anthDEImodels.R`, `R/rivDEImodels.R` | Best-AIC models with DEI point estimates and 95% CIs |
+| `R/anthDEImodelsAdj.R`, `R/rivDEImodelsAdj.R` | Formatted versions of the DEI figures |
+| `R/anthDEIvaluePlots.R`, `R/rivDEIvaluePlots.R` | DEI estimates across a range of thresholds |
+| `R/tableCreation.R` | AIC, pseudo-R² and DEI summary table |
+| `output/initialPlots/`, `output/anthModels/`, `output/rivModels/`, `output/DEIplots/` | Exploratory, model-comparison and DEI figures (PDF) |
+| `output/allDEIplotsAnthAdj.pdf`, `output/allDEIplotsRivAdj.pdf`, `output/AICtable.pdf` | Formatted DEI figures and summary table |
+| `output/anthDEImodels.RData`, `output/rivDEImodels.RData` | Workspaces saved by the DEI model scripts (generated locally, not tracked) |
 
 ## Reproducing the analysis
 
-Open `BehavioralForestEdge.Rproj` in RStudio, install the packages below and run the scripts in this order:
+Open `BehavioralForestEdge.Rproj` in RStudio, install the packages below and run the scripts in this order. All paths are relative to the project root, which RStudio sets as the working directory when the project is opened.
 
-1. `DataCleaning.R` (then `initialPlotting.R`, which uses the data frames it creates)
-2. `anthModelFitting.R`, `rivModelFitting.R`
-3. `anthDEImodels.R`, `rivDEImodels.R` (or the `*Adj.R` versions for formatted figures)
-4. `anthDEIvaluePlots.R`, `rivDEIvaluePlots.R`
-5. `tableCreation.R`
+1. `R/DataCleaning.R` (then `R/initialPlotting.R`, which uses the data frames it creates)
+2. `R/anthModelFitting.R`, `R/rivModelFitting.R`
+3. `R/anthDEImodels.R`, `R/rivDEImodels.R` (or the `*Adj.R` versions for formatted figures)
+4. `R/anthDEIvaluePlots.R`, `R/rivDEIvaluePlots.R`
+5. `R/tableCreation.R`
 
 The binned CSVs are already included, so steps 2–5 can be run without step 1.
 

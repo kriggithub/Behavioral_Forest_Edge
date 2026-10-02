@@ -9,7 +9,7 @@ library(minpack.lm)
 library(investr)
 
 
-anthBinData <- read.csv("anthBinData.csv")
+anthBinData <- read.csv("data/anthBinData.csv")
 # DEI proportions
 deiVals <- c(0.1, 0.25, 0.33, 0.5, 0.66, 0.75, 0.9)
 
@@ -232,6 +232,6 @@ anthDEIthresholdPlots <- ggarrange(DistNNplot,
                              plotTitle, ncol = 2, nrow = 2)
 
 
-#ggexport(anthDEIthresholdPlots, filename = "anthDEIthresholdPlots.pdf", height = 10, width = 10)
+#ggexport(anthDEIthresholdPlots, filename = "output/DEIplots/anthDEIthresholdPlots.pdf", height = 10, width = 10)
 
 

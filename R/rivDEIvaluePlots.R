@@ -9,7 +9,7 @@ library(minpack.lm)
 library(investr)
 library(msm)
 
-rivBinData <- read.csv("rivBinData.csv")
+rivBinData <- read.csv("data/rivBinData.csv")
 # DEI proportions
 deiVals <- c(0.1, 0.25, 0.33, 0.5, 0.66, 0.75, 0.9)
 
@@ -156,5 +156,5 @@ rivDEIthresholdPlots <- ggarrange(DistNNplot,
                                    plotTitle, ncol = 2, nrow = 2)
 
 
-#ggexport(rivDEIthresholdPlots, filename = "rivDEIthresholdPlots.pdf", height = 10, width = 10)
+#ggexport(rivDEIthresholdPlots, filename = "output/DEIplots/rivDEIthresholdPlots.pdf", height = 10, width = 10)
 

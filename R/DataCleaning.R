@@ -10,7 +10,7 @@ library(stringr)
 
 
 # read in working data
-primateData <- read.csv("BehavioralData.csv", header = T)
+primateData <- read.csv("data/BehavioralData.csv", header = T)
 
 # capitalize all IDs to standardize
 primateData$ID <- toupper(primateData$ID)
@@ -47,7 +47,7 @@ monkeyIdData <- primateData %>%
             AnthDist = mean(AnthDist),
             nObs = n())
 
-# write.csv(monkeyIdData, file = "monkeyIdData.csv")
+# write.csv(monkeyIdData, file = "data/monkeyIdData.csv")
 
 
 
@@ -96,7 +96,7 @@ anthBinData <- primateData %>%
 
 
 
-# write.csv(anthBinData, file = "anthBinData.csv")
+# write.csv(anthBinData, file = "data/anthBinData.csv")
 
 
 
@@ -141,7 +141,7 @@ rivBinData <- primateData %>%
                    wtSeRivDist = wtSdRivDist/sqrt(nMonkeys))
 
 
-# write.csv(rivBinData, file = "rivBinData.csv")
+# write.csv(rivBinData, file = "data/rivBinData.csv")
 
 
-# save.image("DataCleaning.RData")
+# save.image("output/DataCleaning.RData")

@@ -11,7 +11,7 @@ library(msm)
 
 
 
-anthBinData <- read.csv("anthBinData.csv")
+anthBinData <- read.csv("data/anthBinData.csv")
 
 # create prediction dataframe
 
@@ -86,24 +86,14 @@ DistNNpointLine <- data.frame(
 )
 
 
-axis_theme <- theme(
-  axis.title = element_text(size = 16),  # axis labels
-  axis.text  = element_text(size = 12)   # tick labels
-)
-
-spacing_theme <- theme(
-  plot.margin = margin(t = 20, r = 20, b = 20, l = 20)  # units are points
-)
-
-
 
 
 powerabcDistNNplot <- ggplot(anthBinDataDistNNSub, aes(x = wtAvgAnthDist, y = wtAvgDistNN)) +
   geom_point() + 
   geom_errorbar(aes(ymin = wtAvgDistNN - wtSeDistNN, ymax = wtAvgDistNN + wtSeDistNN)) +
-  labs(x = "Distance to Anthropogenic Edge (m)", 
-       y = "Mean Distance to Nearest Neighbors" 
-       # title = paste0("Distance from Nearest Neighbors (Power AIC = ", round(powerabcDistNNAIC, 2),")")
+  labs(x = "Distance from Anthropogenic Edge (m)", 
+       y = "(Weighted) Mean Distance from Nearest Neighbors", 
+       title = paste0("Distance from Nearest Neighbors (Power AIC = ", round(powerabcDistNNAIC, 2),")")
   ) +
   theme_bw() +
   geom_line(data = predData, aes(y = powerabcDistNN)) +
@@ -117,16 +107,15 @@ powerabcDistNNplot <- ggplot(anthBinDataDistNNSub, aes(x = wtAvgAnthDist, y = wt
   scale_color_manual(values = setNames("red", DistNNpeLabel)) +
   labs(fill = NULL, color = NULL) +
   theme(
-    # legend.position = "bottom",               
-    # legend.justification = "center",          
-    # legend.direction = "horizontal",          
-    # legend.box = "horizontal",                
-    # legend.background = element_blank(),
-    # legend.key = element_blank()
-    legend.position = "none"
+    legend.position = "bottom",               
+    legend.justification = "center",          
+    legend.direction = "horizontal",          
+    legend.box = "horizontal",                
+    legend.background = element_blank(),
+    legend.key = element_blank()
   )
 
-powerabcDistNNplot <- powerabcDistNNplot + axis_theme + spacing_theme
+
 
 
 ########################################################################################
@@ -193,9 +182,9 @@ NumNNpointLine <- data.frame(
 linearNumNNplot <-ggplot(anthBinDataNumNNSub, aes(x = wtAvgAnthDist, y = wtAvgNumNN)) +
   geom_point() + 
   geom_errorbar(aes(ymin = wtAvgNumNN - wtSeNumNN, ymax = wtAvgNumNN + wtSeNumNN)) +
-  labs(x = "Distance to Anthropogenic Edge (m)", 
-       y = "Mean Number of Nearest Neighbors" 
-       # title = paste0("Number of Nearest Neighbors (Linear AIC = ", round(linearNumNNAIC, 2),")")
+  labs(x = "Distance from Anthropogenic Edge (m)", 
+       y = "(Weighted) Mean # of Nearest Neighbors", 
+       title = paste0("Number of Nearest Neighbors (Linear AIC = ", round(linearNumNNAIC, 2),")")
   ) +
   theme_bw() +
   geom_line(data = predData, aes(y = linearNumNN)) +
@@ -209,16 +198,15 @@ linearNumNNplot <-ggplot(anthBinDataNumNNSub, aes(x = wtAvgAnthDist, y = wtAvgNu
   scale_color_manual(values = setNames("red", NumNNpeLabel)) +
   labs(fill = NULL, color = NULL) + 
   theme(
-    # legend.position = "bottom",               
-    # legend.justification = "center",          
-    # legend.direction = "horizontal",          
-    # legend.box = "horizontal",                
-    # legend.background = element_blank(),
-    # legend.key = element_blank()
-    legend.position = "none"
+    legend.position = "bottom",               
+    legend.justification = "center",          
+    legend.direction = "horizontal",          
+    legend.box = "horizontal",                
+    legend.background = element_blank(),
+    legend.key = element_blank()
   )
 
-linearNumNNplot <- linearNumNNplot + axis_theme + spacing_theme
+
 
 
 ########################################################################################
@@ -285,9 +273,9 @@ FeedingPctpointLine <- data.frame(
 linearFeedingPctplot <-ggplot(anthBinDataFeedingSub, aes(x = wtAvgAnthDist, y = wtAvgFeedingPct)) +
   geom_point() + 
   geom_errorbar(aes(ymin = wtAvgFeedingPct - wtSeFeedingPct, ymax = wtAvgFeedingPct + wtSeFeedingPct)) +
-  labs(x = "Distance to Anthropogenic Edge (m)", 
-       y = "Mean Percent Time Spent Feeding" 
-       # title = paste0("Feeding % (Linear AIC = ", round(linearFeedingPctAIC, 2),")")
+  labs(x = "Distance from Anthropogenic Edge (m)", 
+       y = "(Weighted) Mean % Time Spent Feeding", 
+       title = paste0("Feeding % (Linear AIC = ", round(linearFeedingPctAIC, 2),")")
   ) +
   theme_bw() +
   geom_line(data = predData, aes(y = linearFeedingPct)) +
@@ -301,16 +289,15 @@ linearFeedingPctplot <-ggplot(anthBinDataFeedingSub, aes(x = wtAvgAnthDist, y = 
   scale_color_manual(values = setNames("red", FeedingPctpeLabel)) +
   labs(fill = NULL, color = NULL) + 
   theme(
-    # legend.position = "bottom",               
-    # legend.justification = "center",          
-    # legend.direction = "horizontal",          
-    # legend.box = "horizontal",                
-    # legend.background = element_blank(),
-    # legend.key = element_blank()
-    legend.position = "none"
+    legend.position = "bottom",               
+    legend.justification = "center",          
+    legend.direction = "horizontal",          
+    legend.box = "horizontal",                
+    legend.background = element_blank(),
+    legend.key = element_blank()
   )
 
-linearFeedingPctplot <- linearFeedingPctplot + axis_theme + spacing_theme
+
 
 
 ########################################################################################
@@ -330,23 +317,19 @@ predData$nullMovingPct <- predict(nullMovingPct, newdata = predData)
 nullMovingPctplot <- ggplot(anthBinDataMovingSub, aes(x = wtAvgAnthDist, y = wtAvgMovingPct)) +
   geom_point() + 
   geom_errorbar(aes(ymin = wtAvgMovingPct - wtSeMovingPct, ymax = wtAvgMovingPct + wtSeMovingPct)) +
-  labs(x = "Distance to Anthropogenic Edge (m)", 
-       y = "Mean Percent Time Spent Moving" 
-       # title = paste0("Moving % (Null AIC = ", round(nullMovingPctAIC, 2), ")"),
-       # caption = "No DEI Effects"
+  labs(x = "Distance from Anthropogenic Edge (m)", 
+       y = "(Weighted) Mean % Time Spent Moving", 
+       title = paste0("Moving % (Null AIC = ", round(nullMovingPctAIC, 2), ")"),
+       caption = "No DEI Effects"
   ) +
   theme_bw() +
   geom_line(data = predData, aes(y = nullMovingPct)) +
   theme(
-    # legend.position = "bottom",
-    # legend.box = "horizontal",
-    # legend.key = element_blank(),
-    # legend.background = element_blank(),                           # remove legend
-    # plot.caption = element_text(hjust = 0.5, size = 10)  
-    legend.position = "none"
+    legend.position = "none",                            # remove legend
+    plot.caption = element_text(hjust = 0.5, size = 10)  
   )
 
-nullMovingPctplot <- nullMovingPctplot + axis_theme + spacing_theme
+
 
 
 ########################################################################################
@@ -435,9 +418,9 @@ RestPctpointLine <- data.frame(
 logisticRestPctplot <-ggplot(anthBinDataRestSub, aes(x = wtAvgAnthDist, y = wtAvgRestPct)) +
   geom_point() + 
   geom_errorbar(aes(ymin = wtAvgRestPct - wtSeRestPct, ymax = wtAvgRestPct + wtSeRestPct)) +
-  labs(x = "Distance to Anthropogenic Edge (m)", 
-       y = "Mean Percent Time Spent Resting"
-       # title = paste0("Resting % (Logistic AIC = ", round(logisticRestPctAIC, 2), ")")
+  labs(x = "Distance from Anthropogenic Edge (m)", 
+       y = "(Weighted) Mean % Time Spent Resting", 
+       title = paste0("Resting % (Logistic AIC = ", round(logisticRestPctAIC, 2), ")")
   ) +
   theme_bw() +
   geom_line(data = predData, aes(y = logisticRestPct)) +
@@ -451,20 +434,25 @@ logisticRestPctplot <-ggplot(anthBinDataRestSub, aes(x = wtAvgAnthDist, y = wtAv
   scale_color_manual(values = setNames("red", RestPctpeLabel)) +
   labs(fill = NULL, color = NULL) +
   theme(
-    # legend.position = "bottom",               
-    # legend.justification = "center",          
-    # legend.direction = "horizontal",          
-    # legend.box = "horizontal",                
-    # legend.background = element_blank(),
-    # legend.key = element_blank()
-    legend.position = "none"
+    legend.position = "bottom",               
+    legend.justification = "center",          
+    legend.direction = "horizontal",          
+    legend.box = "horizontal",                
+    legend.background = element_blank(),
+    legend.key = element_blank()
   )
 
 
-logisticRestPctplot <- logisticRestPctplot + axis_theme + spacing_theme
 
 
 
+# plot title
+plottitleAnth <- ggplot() +
+  theme_void() +
+  annotate("text",
+           x = 0, y = 0,
+           label = "Anthropogenic Edge DEIs", 
+           hjust = 0.5, vjust = 0, size = 5)
 
 
 
@@ -474,21 +462,13 @@ allDEIplotsAnth <- ggarrange(powerabcDistNNplot,
                              linearFeedingPctplot,
                              nullMovingPctplot,
                              logisticRestPctplot,
-                             ncol = 2, nrow = 3,
-                             labels   = c("a", "b", "c", "d", "e"),        # panel letters
-                             label.x  = 0.02,                               # a little inset from left
-                             label.y  = 0.98,                               # near the top
-                             hjust    = 0,                                  # left aligned
-                             vjust    = 1,                                  # top aligned
-                             font.label = list(size = 20, face = "bold"))
+                             plottitleAnth, ncol = 3, nrow = 2)
 
 
-allDEIplotsAnth
-
-# save.image(file = "anthDEImodels.RData")
+save.image(file = "output/anthDEImodels.RData")
 
 
-ggexport(allDEIplotsAnth, filename = "allDEIplotsAnthAdj.pdf", height = 15, width = 11)
+# ggexport(allDEIplotsAnth, filename = "output/DEIplots/allDEIplotsAnth.pdf", height = 12, width = 15)
 
 
 

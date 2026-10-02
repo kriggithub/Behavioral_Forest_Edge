@@ -10,7 +10,7 @@ library(investr)
 library(msm)
 
 
-rivBinData <- read.csv("rivBinData.csv")
+rivBinData <- read.csv("data/rivBinData.csv")
 
 # create prediction dataframe
 
@@ -452,10 +452,10 @@ allDEIplotsRiv <- ggarrange(linearDistNNplot,
                             font.label = list(size = 20, face = "bold"))
 
 
-# save.image(file = "rivDEImodels.RData")
+# save.image(file = "output/rivDEImodels.RData")
 
 
-ggexport(allDEIplotsRiv, filename = "allDEIplotsRivAdj.pdf", height = 15, width = 11)
+ggexport(allDEIplotsRiv, filename = "output/allDEIplotsRivAdj.pdf", height = 15, width = 11)
 
 
 

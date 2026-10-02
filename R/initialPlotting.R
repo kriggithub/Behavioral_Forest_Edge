@@ -51,7 +51,7 @@ matitle <- ggplot() +
            hjust = 0.5, vjust = 0, size = 5)
 
 monkeyAnthPlots <- ggarrange(ma1, ma2, ma3, ma4, ma5, matitle, ncol = 3, nrow = 2)
-ggexport(monkeyAnthPlots, filename = "monkeyAnthPlots.pdf", height = 10, width = 15)
+ggexport(monkeyAnthPlots, filename = "output/initialPlots/monkeyAnthPlots.pdf", height = 10, width = 15)
 
 
 
@@ -104,7 +104,7 @@ mrtitle <- ggplot() +
 
 
 monkeyRivPlots <- ggarrange(mr1, mr2, mr3, mr4, mr5, mrtitle, ncol = 3, nrow = 2)
-ggexport(monkeyRivPlots, filename = "monkeyRivPlots.pdf", height = 10, width = 15)
+ggexport(monkeyRivPlots, filename = "output/initialPlots/monkeyRivPlots.pdf", height = 10, width = 15)
 
 
 
@@ -166,7 +166,7 @@ batitle <- ggplot() +
 
 
 binAnthPlots <- ggarrange(ba1, ba2, ba3, ba4, ba5, batitle, ncol = 3, nrow = 2)
-ggexport(binAnthPlots, filename = "binAnthPlots.pdf", height = 10, width = 15)
+ggexport(binAnthPlots, filename = "output/initialPlots/binAnthPlots.pdf", height = 10, width = 15)
 
 
 
@@ -249,7 +249,7 @@ brtitle <- ggplot() +
 
 
 binRivPlots <- ggarrange(br1, br2, br3, br4, br5, brtitle, ncol = 3, nrow = 2)
-ggexport(binRivPlots, filename = "binRivPlots.pdf", height = 10, width = 15)
+ggexport(binRivPlots, filename = "output/initialPlots/binRivPlots.pdf", height = 10, width = 15)
 
 
 
